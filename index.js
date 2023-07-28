@@ -1,10 +1,8 @@
-const { app } = require('./src')
-// const { environment } = require('./src/loaders/environment.loader');
-// const PORT=5000;
+const {app}=require('./src');
+const {environment}=require('./src/loaders/environment.loader');
 
-// (async function init () {
-//     app.listen(5000, () => {
-//         console.log(`Server listening on port 5000`)
-//     })
-// })()
-console.log("hii")
+(async function init(){
+    app.listen(environment.PROT,()=>{
+        console.log(`Server listening on port ${environment.PROT}`)
+    })
+})()
