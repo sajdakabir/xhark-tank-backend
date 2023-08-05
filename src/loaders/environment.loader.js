@@ -7,4 +7,8 @@ module.exports.environment={
     DB_HOST: process.env.DB_HOST,
     PROT:process.env.PROT || 5000,
     SHOW_ADMIN: process.env.SHOW_ADMIN,
+    JWT_SECRET: process.env.SECRET_KEY,
+    JWT_ISSUER: process.env.JWT_ISSUER,
+    JWT_AUDIENCE: process.env.JWT_AUDIENCE,
+    JWT_EXPIRY: process.env.JWT_EXPIRY
 }

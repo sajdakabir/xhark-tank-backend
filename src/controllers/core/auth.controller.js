@@ -1,4 +1,5 @@
-const {signupService}=require('../../services/core/auth.services');
+const {signupService, validateUser}=require('../../services/core/auth.services');
+const {generateJWTToken}=require('../../services/utils/jwt.service')
 
 const registerEmailUserController = async (req, res, next) => {
   try {
@@ -14,6 +15,23 @@ const registerEmailUserController = async (req, res, next) => {
   }
 }
 
+const loginController=async(req,res,next)=>{
+  try {
+    const { email, password } = req.body;
+    const user = await validateUser(email, password);
+    const token = await generateJWTToken(user);
+    res.status(200).json({
+        statusCode: 200,
+        response: token
+    });
+  } catch (err) {
+    const error = new Error(err);
+    error.statusCode = err.statusCode || 500;
+    next(error);
+  }
+}
+
 module.exports = {
-    registerEmailUserController
+    registerEmailUserController,
+    loginController
 };
