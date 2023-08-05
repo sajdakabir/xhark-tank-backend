@@ -1,4 +1,6 @@
+const AuthRoute =require('./core/auth.route');
 const initRoutes=(app)=>{
+    app.use('/auth',AuthRoute);
     app.get('/',async(req,res)=>{
         res.json({
             "message":"Welcome to XharkTank Developers Portal"
