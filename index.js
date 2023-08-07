@@ -1,8 +1,8 @@
-const {app}=require('./src');
-const {environment}=require('./src/loaders/environment.loader');
+import { app } from './src';
+import { environment } from './src/loaders/environment.loader.js';
 
-(async function init(){
-    app.listen(environment.PROT,()=>{
+(async function init() {
+    app.listen(environment.PROT, () => {
         console.log(`Server listening on port ${environment.PROT}`)
     })
 })()

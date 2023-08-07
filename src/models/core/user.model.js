@@ -1,9 +1,9 @@
-const { Schema } = require("mongoose");
-const { v4: uuid } = require('uuid');
-const { db } = require("../../loaders/db.loader.js");
-const bcrypt =require('bcrypt');
+import { Schema } from "mongoose";
+import { v4 as uuid } from 'uuid';
+import { db } from "../../loaders/db.loader.js";
+import bcrypt from 'bcrypt';
 
-exports.USER_ROLES = ['admin', 'entrepreneur', 'investor'];
+export const USER_ROLES = ['admin', 'entrepreneur', 'investor'];
 
 
 const UserSchema = new Schema({
@@ -32,7 +32,7 @@ const UserSchema = new Schema({
     },
     role: {
         type: Schema.Types.String,
-        enum: exports.USER_ROLES, 
+        enum: USER_ROLES, 
         required: true,
     },
 
@@ -56,6 +56,6 @@ UserSchema.pre('save', function(next) {
 
 const User = db.model('User', UserSchema);
 
-module.exports = {
+export {
     User
 };
