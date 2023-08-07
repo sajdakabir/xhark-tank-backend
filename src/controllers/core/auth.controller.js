@@ -1,5 +1,5 @@
-const {signupService, validateUser}=require('../../services/core/auth.services');
-const {generateJWTToken}=require('../../services/utils/jwt.service')
+import {signupService, validateUser}from '../../services/core/auth.services.js';
+import {generateJWTToken}from '../../services/utils/jwt.service.js';
 
 const registerEmailUserController = async (req, res, next) => {
   try {
@@ -31,7 +31,7 @@ const loginController=async(req,res,next)=>{
   }
 }
 
-module.exports = {
+export {
     registerEmailUserController,
     loginController
 };

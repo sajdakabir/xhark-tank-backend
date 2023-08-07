@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import { environment } from './loaders/environment.loader.js';
-import { ValidationError } from 'joi';
-import { initRoutes } from './routes';
+// import { ValidationError } from 'joi';
+import { initRoutes } from './routes/index.js';
 
 const app = express()
 app.use(cors());

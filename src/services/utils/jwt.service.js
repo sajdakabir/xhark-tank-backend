@@ -1,5 +1,5 @@
-const jwt=require('jsonwebtoken');
-const {environment}=require('../../loaders/environment.loader');
+import jwt from 'jsonwebtoken';
+import {environment}from '../../loaders/environment.loader.js';
 
 const generateJWTToken = async (user) => {
     const token = jwt.sign(
@@ -16,6 +16,6 @@ const generateJWTToken = async (user) => {
     return token;
 };
 
-module.exports={
+export {
     generateJWTToken
 }

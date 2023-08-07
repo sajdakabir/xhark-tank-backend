@@ -1,5 +1,5 @@
-const {User} = require('../../models/core/user.model');
-const bcrypt=require('bcrypt');
+import {User} from '../../models/core/user.model.js';
+import bcrypt from 'bcrypt';
 
 const signupService = async (
     name,
@@ -42,7 +42,7 @@ const validateUser = async (
     return user;
 };
 
-module.exports = {
+export {
     signupService,
     validateUser
 }
