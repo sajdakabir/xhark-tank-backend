@@ -1,4 +1,4 @@
-const AuthRoute =require('./core/auth.route');
+import AuthRoute from './core/auth.route.js';
 const initRoutes=(app)=>{
     app.use('/auth',AuthRoute);
     app.get('/',async(req,res)=>{
@@ -14,6 +14,6 @@ const initRoutes=(app)=>{
     })
 }
 
-module.exports={
+export{
     initRoutes
 }
