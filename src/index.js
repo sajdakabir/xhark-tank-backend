@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { environment } from './loaders/environment.loader.js';
-// import { ValidationError } from 'joi';
+import Joi from "joi";
 import { initRoutes } from './routes/index.js';
 
 const app = express()
@@ -13,14 +13,15 @@ app.use(
     })
 )
 initRoutes(app);
+
 app.use((err, req, res, next) => {
-    console.log(err);
+    console.log(err)
     if (environment.SHOW_ADMIN) {
-        console.log(err);
+        console.log(err)
     }
     if (err) {
         if (err.statusCode === 500) {
-
+            // sentry.captureException(err)
         }
         res.status(err instanceof ValidationError ? 400 : err.statusCode || 500).send({
             statusCode: err instanceof ValidationError ? 400 : err.statusCode || 500,
@@ -30,7 +31,6 @@ app.use((err, req, res, next) => {
         next()
     }
 })
-
 export {
     app,
     express
