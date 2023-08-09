@@ -1,3 +1,4 @@
+import { LoginPayload } from '../../payloads/core/auth.payload.js';
 import {signupService, validateUser}from '../../services/core/auth.services.js';
 import {generateJWTToken}from '../../services/utils/jwt.service.js';
 
@@ -17,8 +18,8 @@ const registerEmailUserController = async (req, res, next) => {
 
 const loginController=async(req,res,next)=>{
   try {
-    const { email, password } = req.body;
-    const user = await validateUser(email, password);
+    const payload=await LoginPayload.validateAsync(req.body);
+    const user = await validateUser(payload.email, payload.password);
     const token = await generateJWTToken(user);
     res.status(200).json({
         statusCode: 200,

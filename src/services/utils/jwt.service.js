@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import {environment}from '../../loaders/environment.loader.js';
 
 const generateJWTToken = async (user) => {
-    console.log(environment.JWT_ISSUER);
     const token = jwt.sign(
         {
             id: user.uuid,
