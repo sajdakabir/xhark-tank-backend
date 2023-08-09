@@ -4,6 +4,7 @@ import { environment } from './loaders/environment.loader.js';
 import Joi from "joi";
 import { initRoutes } from './routes/index.js';
 
+const { ValidationError } = Joi;
 const app = express()
 app.use(cors());
 app.use(express.json());
