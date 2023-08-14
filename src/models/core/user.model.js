@@ -3,9 +3,6 @@ import { v4 as uuid } from 'uuid';
 import { db } from "../../loaders/db.loader.js";
 import bcrypt from 'bcrypt';
 
-export const USER_ROLES = ['admin', 'entrepreneur', 'investor'];
-
-
 const UserSchema = new Schema({
     uuid: {
         type: Schema.Types.String,
@@ -30,10 +27,9 @@ const UserSchema = new Schema({
         type: Schema.Types.String,
         required: true,
     },
-    role: {
-        type: Schema.Types.String,
-        enum: USER_ROLES, 
-        required: true,
+    roles: {
+        type:Schema.Types.Array,
+        default:["User"]
     },
 
 }, {
